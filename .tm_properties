@@ -1,0 +1,22 @@
+# Settings
+tabSize              = 4
+projectDirectory     = "$CWD"
+windowTitle          = "$TM_DISPLAYNAME — ${CWD/^.*\///}"
+windowTitle          = "$TM_DISPLAYNAME${TM_DIRECTORY/\A(?:\/Users\/username\w+\/?(.*)|(.+))\z/${2:? – ${2/\A\/Users\/username/~/}:${1/\A(?=.)/ – /}}/}"
+
+localExcludeFiles    = "*.tmproj,*.sublime*,*.gz"
+excludeInFileChooser = "{$excludeInFileChooser,$localExcludeFiles}"
+excludeInBrowser     = "{$excludeInBrowser,$localExcludeFiles}"
+
+# include     = "{$include, *.pdf}"
+# includeInFileChooser = "{$inlcueInFileChooser,*.gitignore}"
+
+# Basic Settings
+#
+# fontName         = "Monaco"
+# fontSize         = 14
+
+
+TM_MAKE_FILE         = '${CWD}/Makefile'
+TM_MAKE_TARGET       = 'entmp'
+
