@@ -10,7 +10,7 @@ As a fan of [PGF/TikZ](http://sourceforge.net/projects/pgf/), I made a number of
 
 ### Inverted Pendulum
 
-[Inverted Pendulum](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-InvertedPendulum.png)
+![Inverted Pendulum](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-InvertedPendulum.png)
 
 
 ## Pgfplots
