@@ -4,6 +4,14 @@ As a fan of [PGF/TikZ](http://sourceforge.net/projects/pgf/), I made a number of
 
 ## PGF/TikZ
 
+### Bodeplot
+
+![Bodeplot](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-Bodeplot.png)
+
+### Inverted Pendulum
+
+[Inverted Pendulum](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-InvertedPendulum.png)
+
 
 ## Pgfplots
 
