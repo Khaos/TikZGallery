@@ -15,6 +15,8 @@
 % \usepackage{fourier}
 % }
 
+\gdef\realauthorname{Khaos}
+
 \usepackage{lipsum}
 
 \usepackage{tkz-euclide,tkz-fct}
@@ -42,7 +44,8 @@
 \usepackage[frenchb]{babel}
 \usepackage[autolanguage]{numprint}
 
-% \usepackage{background}
+% \usepackage[pages=some,firstpage=true]{background}
+\usepackage[firstpage=true]{background}
 \usepackage{tkzexample}
 % \usepackage[saved]{tkzexample}
 % \def\tkzFileSavedPrefix{TikZGallery}%
@@ -65,7 +68,7 @@
                 bookmarksnumbered = true,%
                 linktocpage = true,
                 pdfsubject = {2d Drawings},
-                pdfauthor = {Dazhi Jiang},
+                pdfauthor = {\realauthorname},
                 pdftitle = {The TikZ Gallery},
                 pdfkeywords={TikZ},
                 pdfcreator={LaTeX}
@@ -77,7 +80,7 @@
 \gdef\nameofdoc{tikzgallery}
 \gdef\versionofdoc{0.01 a}   
 \gdef\dateofdoc{2012/11/10}
-\gdef\authorofpack{Dazhi Jiang}
+\gdef\authorofpack{\realauthorname}
 \gdef\adressofauthor{}
 % \gdef\namecollection{Notes on \TIKZ{}}
 \gdef\namecollection{Notes on Ti\emph{k}Z}
@@ -87,7 +90,7 @@
 \gdef\urlauthorcom{}
 \gdef\authoremail{mailto:jiangdzh@gmail.com}
 \title{The \TIKZ{} Gallary}
-\author{Dazhi Jiang}
+\author{\realauthorname}
 
 \usetikzlibrary{circuits,%
     intersections,%
@@ -97,6 +100,8 @@
     positioning,
     shadows,
 	external,
+	calc,
+	mindmap,
 }
 
 
@@ -106,6 +111,82 @@
 %<---------------------------------  Couverture ---------------------------->
 %<---------------------------------  Make Title ---------------------------->
 \@ifundefined{pgfnotitlebgtrue}{\newif\ifpgfnotitlebg}{}
+
+\backgroundsetup{contents={}}
+
+\renewcommand\maketitle{%
+\begin{tikzpicture}[remember picture, overlay]
+	
+	%% * Background colour
+	\fill [Peach!10] (current page.south west) rectangle (current page.north east);
+	
+	%% * Sidebar
+	\node [fill = Mahogany, %
+		   anchor = north west, %
+		   minimum height = 40mm, %
+		   minimum width = \paperheight, %
+		   align = flush right, %
+		   % inner xsep = 20mm, %
+		   text width=\paperheight-40mm, %
+		   rotate = 90 %
+		   ] 
+		at ($(current page.south west) + (0mm,0)$)
+		{\fontsize{60}{60}\color{orange!50!white}%
+		\bfseries \selectfont{\@title\ \versionofpack}};
+	
+	%% * Title
+	\node[Mahogany,above,inner sep=0pt] 
+		at ($(current page.south west) + (120mm,250mm)$) 
+		{\global\setbox\tkzbox=\hbox{\fontsize{60}{60}\selectfont{\namecollection}}\copy\tkzbox};
+	\node[above,yscale=-1,inner sep=0pt,xslant=1.5,Peach!60] 
+		at ($(current page.south west) + (120mm,250mm)$) 
+		{\box\tkzbox};
+	
+	%% * Outline mindmap
+	\path[mindmap, concept color=green!51!blue!40!red!90!red, text=orange!70!white, text width=4cm]
+	node[concept] 
+		at ($(current page.south west) + (130mm,155mm)$)
+		{The Ti\emph{k}Z Gallery}
+		[clockwise from=0]
+		child[concept color=green!51!blue!40!red!90!red!90!orange, text width=3cm] {
+        	node[concept]
+				{\hyperref[sec:introduction]{{\textcolor{orange!40!white}{Introduction}}}}
+		}
+		child[concept color=green!51!blue!40!red!90!red!80!orange, text width=3cm] {
+			node[concept]
+				{\hyperref[sec:pgf_and_tikz]{{\textcolor{orange!40!white}{PGF and Ti\emph{k}Z}}}}
+		}
+		child[concept color=green!51!blue!40!red!90!red!70!orange, text width=3cm] {
+			node[concept]
+				{\hyperref[sec:pgfplots]{{\textcolor{orange!40!white}{Pgfplots}}}}
+		}
+		child[concept color=green!51!blue!40!red!90!red!60!orange, text width=3cm] {
+			node[concept]
+				{\hyperref[sec:pgf_tikz_gnuplot]{{\textcolor{orange!40!white}{PGF/Ti\emph{k}Z+Gnuplot}}}}
+		}
+		child[concept color=green!51!blue!40!red!90!red!50!orange, text width=3cm] {
+			node[concept]
+				{\hyperref[sec:r_and_pgf_tikz]{{\textcolor{orange!40!white}{R and PGF/Ti\emph{k}Z}}}}
+	};
+	
+	
+	%% * Author
+	\node [align = flush left, anchor=north west, inner sep=0] 
+		at ($(current page.south west) + (130mm,40mm)$)
+		{\fontsize{17}{21}
+		 \textcolor{Mahogany}{\selectfont{\authorofpack}}};
+	\node [align = flush left, anchor=north west, inner sep=0] 
+		at ($(current page.south west) + (130mm,30mm)$)
+		{\textcolor{Mahogany}{\today}};
+	\node [align = flush left, anchor=north west, inner sep=0] 
+		at ($(current page.south west) + (130mm,20mm)$)
+		{\url{\urlauthor} \ \url{\urlauthorcom}};
+% \put(130,20){\makebox(0,0)[l]{%
+% \textcolor{Mahogany}{\url{\urlauthor} \ \url{\urlauthorcom}}}}
+% \put(130,30){\makebox(0,0)[l]{\textcolor{Mahogany}{\today}}}
+	
+\end{tikzpicture}
+}
 
 % \ifpgfnotitlebg
 % 	\renewcommand\maketitle{}
@@ -194,11 +275,6 @@
 		verbose IO=false,
 		%xport=true,% FASTER FOR DEBUGGING
 	]{#1}
-		%% !!!
-		%% Changed by Dazhi Jiang - 2010-09-20
-		%% The following line is commented since the new definition of
-		%% \tikzexternalize in PGF cvs
-		% {pgfplots}
 	\tikzifexternalizing{%
 		\nofiles
 	}{}%
@@ -217,7 +293,7 @@
 \pdfinfo{/Title (TikZGallery.pdf)
          /Creator (TeX)
          /Producer (pdfeTeX)
-         /Author (Dazhi Jiang)
+         /Author (\realauthorname)
          /CreationDate (12 November  2012) 
          /Subject (Documentation of the TikZ gallery)
          /Keywords (tikz, pgf, pgfplots, gnuplot, R, pdfeTeX, graphics,
