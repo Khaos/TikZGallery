@@ -6,6 +6,10 @@ As a fan of [PGF/TikZ](http://sourceforge.net/projects/pgf/), I made a number of
 
 ## PGF/TikZ
 
+### The Title Page
+
+![Title page](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/TikZGallery.png)
+
 ### Bodeplot
 
 ![Bodeplot](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-Bodeplot.png)
