@@ -3,6 +3,7 @@
 *.*
 !*.tex
 !*.sty
+!*.cls
 !*.gst
 !.Renviron
 !.gitignore
@@ -18,6 +19,7 @@ Figs/gnuplot
 Figs/tmp
 Figs/Src/*.*
 !Figs/Src/*.tikz
+Figs/Src/test-*.*
 !Figs/Src/*.tex
 !Figs/Src/*.txt
 !Figs/Src/*.dat
@@ -26,6 +28,8 @@ Figs/Src/*.*
 !Figs/Src/*.gp
 !Figs/png/*.png
 !Figs/png/*.jpg
+Standalone/*.*
+!Standalone/*.tex
 tmp
 recycle
 test

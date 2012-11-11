@@ -18,5 +18,9 @@ excludeInBrowser     = "{$excludeInBrowser,$localExcludeFiles}"
 
 
 TM_MAKE_FILE         = '${CWD}/Makefile'
-TM_MAKE_TARGET       = 'entmp'
+TM_MAKE_TARGET       = 'tmp'
 
+## !!! Specify the local style file directory
+stydirlocal          = "./Sty"
+# TEXINPUTS            = "$(stydirlocal):$(TEXINPUTS)"
+TEXINPUTS            = "$stydirlocal:$TEXINPUTS"

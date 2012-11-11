@@ -1,0 +1,226 @@
+%% -*- Mode: LaTeX; tab-width: 4;
+
+%% TikZGallery-Preamble.tex    TikZ Gallery Preamble
+%% Preamble part of the main document. It could be obsoleted later and replaced by
+%% style file.
+%% MAIN FILE: ../TikZGallery.tex
+%% Created by Dazhi Jiang, 2012-11-11 07:38:07 +0800 (Sun, 11 Nov 2012)
+%% Copyright (c) 2012 Dazhi Jiang. All Rights Reserved. 
+
+%% TextMate Settings
+%!TEX root = ../TikZGallery.tex
+
+% \AtBeginDocument{%
+% \PassOptionsToPackage{sloped}{fourier}
+% \usepackage{fourier}
+% }
+
+\usepackage{lipsum}
+
+\usepackage{tkz-euclide,tkz-fct}
+\usetkzobj{all} 
+\tkzSetUpColors[background=fondpaille,text=Maroon]
+
+\usepackage{esvect}
+% \usepackage{vector}
+\usepackage{mathtools}
+
+\usepackage{siunitx}
+
+\usepackage{url}
+\def\UrlFont{\small\ttfamily}
+\usepackage[protrusion = true,
+            expansion,
+            final,
+            verbose = false,
+            babel   = true]{microtype}
+
+\DisableLigatures{encoding = T1, family = tt*}
+\usepackage[parfill]{parskip}
+
+\usepackage{shortvrb,fancyvrb} 
+\usepackage[frenchb]{babel}
+\usepackage[autolanguage]{numprint}
+
+% \usepackage{background}
+\usepackage{tkzexample}
+% \usepackage[saved]{tkzexample}
+% \def\tkzFileSavedPrefix{TikZGallery}%
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\usepackage[pdftex,unicode,
+                colorlinks = true,
+                pdfpagelabels, 
+                urlcolor = blue,
+                filecolor = pdffilecolor,
+                linkcolor = blue,
+                breaklinks = false,
+                hyperfootnotes=false,
+                % bookmarks=false,
+                % bookmarksopen=false,
+                bookmarks,
+                bookmarksopen = true,
+                bookmarksnumbered = true,%
+                linktocpage = true,
+                pdfsubject = {2d Drawings},
+                pdfauthor = {Dazhi Jiang},
+                pdftitle = {The TikZ Gallery},
+                pdfkeywords={TikZ},
+                pdfcreator={LaTeX}
+                ]{hyperref}  
+
+\gdef\nameofpack{The \TIKZ{} Gallery}
+\gdef\versionofpack{0.0.1.0}
+\gdef\dateofpack{2012/11/10}
+\gdef\nameofdoc{tikzgallery}
+\gdef\versionofdoc{0.01 a}   
+\gdef\dateofdoc{2012/11/10}
+\gdef\authorofpack{Dazhi Jiang}
+\gdef\adressofauthor{}
+% \gdef\namecollection{Notes on \TIKZ{}}
+\gdef\namecollection{Notes on Ti\emph{k}Z}
+% \gdef\urlauthor{http://khaos.github.com}
+% \gdef\urlauthorcom{http://khaos.github.com/TikZGallery}
+\gdef\urlauthor{http://khaos.github.com/TikZGallery}
+\gdef\urlauthorcom{}
+\gdef\authoremail{mailto:jiangdzh@gmail.com}
+\title{The \TIKZ{} Gallary}
+\author{Dazhi Jiang}
+
+\usetikzlibrary{circuits,%
+    intersections,%
+    scopes, arrows, fadings, patterns,%
+    decorations.pathreplacing,%
+    decorations.pathmorphing,%
+    positioning,
+    shadows,
+	external,
+}
+
+
+\makeatletter
+\renewcommand*\l@subsubsection{\bprot@dottedtocline{3}{3.8em}{4em}}
+
+%<---------------------------------  Couverture ---------------------------->
+%<---------------------------------  Make Title ---------------------------->
+\@ifundefined{pgfnotitlebgtrue}{\newif\ifpgfnotitlebg}{}
+
+% \ifpgfnotitlebg
+% 	\renewcommand\maketitle{}
+% \fi
+
+% \renewcommand\maketitle{%
+% \null
+% \AddToShipoutPicture*{%
+% % {
+% \setlength\unitlength{1mm}
+% \put(0,0){\makebox(0,0)[lb]{\color{Peach!10}\rule{\paperwidth}{\paperheight}}}
+% \put(0,0){\makebox(0,0)[lb]{\color{Mahogany}\rule{40mm}{\paperheight}}}
+% \put(20,270){\rotatebox{90}{% 
+% \makebox(0,0)[r]{\fontsize{60}{60}\color{orange!50!white}%
+% \bfseries \selectfont{\@title\ \versionofpack}\hfill}}}%
+%     \put(60,80){%
+%     \begin{pgfpicture} 
+% \pgfmathdeclarerandomlist{color}{{Peach}{Orange}{Red}{Brown}} 
+% \foreach \a in {1,...,5}{% 
+%   \pgfmathrandominteger{\x}{1}{300} 
+%   \pgfmathrandominteger{\y}{1}{200} 
+%   \pgfmathrandominteger{\r}{20}{100} 
+%   \pgfmathrandominteger{\s}{5}{95} 
+%   \pgfmathrandominteger{\o}{50}{80}
+%   \pgfmathrandomitem{\c}{color} 
+%   \pgfdeclareradialshading{ballshading}{\pgfpoint{-10bp}{10bp}} 
+%   {color(0bp)=(\c!15!white); color(9bp)=(\c!75!white); 
+%    color(18bp)=(\c!70!black); color(25bp)=(\c!50!black); color(50bp)=(black)}
+%   \pgfsetfillopacity{\o/100} 
+%   \pgfpathcircle{\pgfpoint{+\x pt}{+\y pt}}{+\r pt} 
+%   \pgfshadepath{ballshading}{\s} 
+%   \pgfusepath{}
+% }%
+% \end{pgfpicture}}
+% \put(60,250){\makebox(0,0)[l]{%
+% \begin{tikzpicture}
+% \nodeshadowedone(2,-1.25){\fontsize{60}{60}\selectfont{\namecollection}};
+% \end{tikzpicture}
+% }}%
+% \put(130,40){\makebox(0,0)[l]{%
+% \fontsize{17}{21}
+% \textcolor{Mahogany}{\selectfont{\authorofpack}}}} 
+% \put(130,20){\makebox(0,0)[l]{%
+% \textcolor{Mahogany}{\url{\urlauthor} \ \url{\urlauthorcom}}}}
+% \put(130,30){\makebox(0,0)[l]{\textcolor{Mahogany}{\today}}}
+% }
+% %<----------------------------- End   Couverture ---------------------------->
+% \setcounter{footnote}{0}%
+% \ClearShipoutPictureBG
+% }
+
+%<--------------------------- presentation ---------------------------------->
+% \providecommand\href[2]{\texttt{#1}}
+
+\renewcommand*\presentation{%
+  \thispagestyle{empty}%
+ \par\vspace*{3 cm}
+     \begin{center}
+     	{\Huge \@nameoffile}
+     \end{center}   
+    \par\vspace*{3 cm}
+    \noindent
+  \newlength{\@lx}\settowidth{\@lx}{\huge \namecollection}%
+  \advance\@lx3em\quad
+  \href{\urlauthor}{%
+    \rotatebox{90}{\hspace*{1.5em}{\huge \namecollection}}}
+  \textcolor{Mahogany}{\rule{2pt}{\@lx}}\quad%
+  \begin{minipage}[b]{.90\textwidth}
+    {%
+    \noindent\hfill
+     \raggedleft\Large
+     \href{\authoremail}{\textcolor{blue}{\authorofpack}}\par
+     }%
+     \emph{\@defoffile}\par
+    %[\nameofdoc\ \dateofdoc]\par\medskip
+  \end{minipage}
+}
+%<---------------------- end  presentation ---------------------------------->
+
+\newcommand{\setpgfexternalmainfile}[1]{%
+	% \usepgfplotslibrary{external}
+	\tikzexternalize[
+		prefix=Figs/pdf/pgf-,
+		export=false, % needs to be activated for single pictures (i.e. expensive ones)
+		mode=list and make,
+		verbose IO=false,
+		%xport=true,% FASTER FOR DEBUGGING
+	]{#1}
+		%% !!!
+		%% Changed by Dazhi Jiang - 2010-09-20
+		%% The following line is commented since the new definition of
+		%% \tikzexternalize in PGF cvs
+		% {pgfplots}
+	\tikzifexternalizing{%
+		\nofiles
+	}{}%
+	% \tikzset{external/up to date check=simple}
+}%
+
+\makeatother
+
+\setpgfexternalmainfile{TikZGallery}
+
+%% !!! Use double backslash here
+\tikzset{external/system call={pdflatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\\newif\\ifpgfnotitlebg\\pgfnotitlebgtrue\\input{\texsource}"}}
+
+\AtBeginDocument{\MakeShortVerb{\|}}
+\pdfcompresslevel=9    
+\pdfinfo{/Title (TikZGallery.pdf)
+         /Creator (TeX)
+         /Producer (pdfeTeX)
+         /Author (Dazhi Jiang)
+         /CreationDate (12 November  2012) 
+         /Subject (Documentation of the TikZ gallery)
+         /Keywords (tikz, pgf, pgfplots, gnuplot, R, pdfeTeX, graphics,
+                   pdflatex)}
+%\newcommand*{\E}{\ensuremath{\mathrm{e}}
+%}

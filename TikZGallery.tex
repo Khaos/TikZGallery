@@ -1,0 +1,134 @@
+%% -*- Mode: LaTeX; tab-width: 4;
+
+%% TikZGallery.tex    Main file of the TikZGallery project
+%% A collection of my TikZ diagrams
+%% Created by Dazhi Jiang, 2012-11-10 07:00:42 +0800 (Sat, 10 Nov 2012)
+%% Copyright (c) 2012 Dazhi Jiang. All Rights Reserved. 
+
+%% TextMate Settings
+%!TEX TS-program = pdflatex
+%!TEX TS-options = -shell-escape -interaction=nonstopmode -file-line-error
+
+% \RequirePackage{fourier}
+\documentclass[DIV         = 12,
+               fontsize    = 10,
+               headinclude = false,
+               index       = totoc,
+               footinclude = false,
+               twoside,
+               headings    = small]{tkz-doc}
+
+\input{TikZGallery-Preamble}
+
+\begin{document}
+
+\title{\nameofpack}
+\date{\today}
+\clearpage
+\thispagestyle{empty}
+
+\ifpgfnotitlebg
+\else
+	\maketitle
+\fi
+
+\clearpage
+
+
+\pagecolor{fondpaille}
+\color{Maroon}
+\colorlet{graphicbackground}{fondpaille}
+\colorlet{codebackground}{Peach!30}
+\colorlet{codeonlybackground}{Peach!30} 
+
+\nameoffile{\nameofpack}
+
+\defoffile{Short introduction \tkzname{CTAN}, \TIKZ.}%{abcdef}
+
+\presentation
+
+\vspace*{1cm}
+\noindent\lefthand\ Thanks \textbf{Till Tantau} \href{http://sourceforge.net/projects/pgf/}{Ti\emph{k}Z}, \tkzimp{Michel Bovani} for \tkzname{fourier}, \tkzname{utopia}.
+
+\vspace*{12pt}
+\noindent\lefthand\ Thanks.
+
+\vspace*{12pt}
+\noindent\lefthand\ You can find more information from my site:
+\href{http://khaos.github.com/TikZGallery}{TikZGallery}
+
+\vfill 
+You can send your comments and report errors to the following address: \href{\authoremail}{\textcolor{blue}{\authorofpack}}.
+ 
+This file can be redistributed and/or modified under the terms of the LATEX 
+Project Public License Distributed from \href{http://www.ctan.org/}{CTAN}\  archives.
+
+\clearpage\newpage
+
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex} 
+
+
+\section{Introduction} % (fold)
+\label{sec:introduction}
+
+\lipsum[1-7]
+
+$Ax$
+
+% section introduction (end)
+
+\clearpage
+
+\section{PGF and \TIKZ{}} % (fold)
+\label{sec:pgf_and_tikz}
+
+\begin{tkzexample}[latex=8cm,small]
+\begin{tikzpicture}
+ \tkzInit[xmax=5]  
+ \tkzDrawX[label={},noticks]
+\end{tikzpicture}
+\end{tkzexample}
+
+% \tikzset{external/export next=true}
+% \tikzset{external/export next=true}
+{
+% \tikzpicturedependsonfile{Figs/Src/InvertedPendulum.tikz}
+\tikzset{external/export=true}
+%% !!! We really need to repeat \tikzsetnextfilename twice before and after 
+%%     \tikzpicturedependsonfile
+\tikzsetnextfilename{o-InvertedPendulum}
+\tikzpicturedependsonfile{Figs/Src/InvertedPendulum.tikz}
+\tikzsetnextfilename{o-InvertedPendulum}
+\begin{tkzexample}[vbox, small]
+\input{Figs/Src/InvertedPendulum.tikz}
+\end{tkzexample}
+}
+
+\begin{tkzexample}[latex=8cm,small]
+\begin{tikzpicture}
+ \tkzInit[xmax=5]  
+ \tkzDrawX[label={},noticks]
+\end{tikzpicture}
+\end{tkzexample}
+
+{
+% \tikzpicturedependsonfile{Figs/Src/InvertedPendulum.tikz}
+\tikzset{external/export=true}
+%% !!! We really need to repeat \tikzsetnextfilename twice before and after 
+%%     \tikzpicturedependsonfile
+\tikzsetnextfilename{o-InvertedPendulum-test1}
+\tikzpicturedependsonfile{Figs/Src/test-InvertedPendulum.tikz}
+\tikzsetnextfilename{o-InvertedPendulum-test1}
+\begin{tkzexample}[vbox, small]
+\input{Figs/Src/test-InvertedPendulum.tikz}
+\end{tkzexample}
+}
+
+
+% section pgf_and_tikz (end)
+
+\clearpage\newpage 
+\makeatletter
+
+\printindex
+\end{document}
