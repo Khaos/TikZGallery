@@ -38,7 +38,7 @@
 					},
 	ground/.style={fill=brown!20},
 	inner wheel/.style={fill=Silver!50},
-	outer wheel/.style={thin,double = black!75,double distance = 0.6mm},
+	outer wheel/.style={thin,double = black!75,double distance = 0.6mm,black},
 	wheel shadow/.style={thin,fill = black!70,path fading = south},
 	xycoord/.style={<->, thick, black!50},
 }
@@ -176,8 +176,8 @@
 				arc [radius=9mm, start angle=-90, delta angle=195] ;
 			% \node [above right] at (50:8.5mm) {$\gls{theta}$};
 			\node [above right] at (50:8.5mm) {$\theta$};
-			\draw [thin] (110:14mm) -- (-10mm, 10mm) 
-				node [left] {$m$, $I$};
+			\draw [thin, helpline] (110:14mm) -- (-10mm, 10mm) 
+				node [left,opacity=1] {{\color{blue}$m$, $I$}};
 				% node [left] {$\gls{m}$, $\gls{I}$};
 		\end{scope}
 		\begin{scope}[shift = {(9mm, 12.4mm)}, rotate=20]
@@ -190,25 +190,5 @@
 			\xycoord
 		\end{scope}
 	\end{scope}
-	
-	% \begin{pgfonlayer}{background}
-	% 	%% * Compute a few help coordinates
-	% 	% \coordinate (bl) at (-40mm, -24mm);
-	% 	% \coordinate (tr) at (58mm, 45mm);
-	% 	\coordinate (bl) at ($(inner box.south west) + (-5mm, -5mm)$);
-	% 	\coordinate (tr) at ($(inner box.north east) + (+5mm, +5mm)$);
-	% 	\draw [fill=white, %
-	% 		  rounded corners = 1.5pt, %
-	% 		  draw=black!30, %
-	% 		  % decorate, %
-	% 		  % decoration={random steps,segment length=3pt,amplitude=1pt}, %
-	% 		  drop shadow={fill=black!10}, %
-	% 		  % general shadow={fill=black!10, shadow scale=1.01}, %
-	% 		  % dashed, %
-	% 		  ]
-	% 			% (inner box.south west) + (-5mm, -5mm) rectangle 
-	% 			% (inner box.north east) + (5mm, 5mm);
-	% 			(bl) rectangle (tr);
-	% \end{pgfonlayer}
 
 \end{tikzpicture}

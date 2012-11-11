@@ -1,0 +1,138 @@
+%% -*- Mode: LaTeX; tab-width: 4;
+
+%% VehicleControl.tikz    Vehicle Control System
+%% Schematic diagram of vehicle control system
+%% MAIN FILE: ../../TikZGallery.tex
+%% Created by Dazhi Jiang, 2011-03-03 09:03:28 +0000 (Thu,  3 Mar 2011)
+%% Copyright (c) 2011 Dazhi Jiang. All Rights Reserved. 
+
+%% TextMate Settings
+%!TEX root = ../../TikZGallery.tex
+
+%% * Preamble:
+%%   \usepackage{tikz}
+%%   \usetikzlibrary{
+%%       intersections,%
+%%       scopes, arrows, fadings, patterns,%
+%%       shadows,%
+%%       shadings,%
+%%       positioning,%
+%%       shapes.misc,%
+%%       shapes.geometric,%
+%%   }
+
+
+\def\earthradius{80mm}
+\def\vehicleheight{28mm}
+\def\vehiclewidth{8mm}
+
+\pgfdeclareverticalshading{vbodyshading}{\vehicleheight+2mm}
+	{color(0mm)=(black!70);
+	color(\vehiclewidth-2mm)=(white);
+	color(\vehiclewidth)=(black!30)}
+\pgfdeclareradialshading{earthshading}{\pgfpoint{0mm}{0mm}}%
+	{rgb(0mm)=(1,1,1);
+	 rgb(\earthradius-7mm)=(1,1,1); 
+	 color(\earthradius)=(brown)}
+
+\tikzset{%
+	help arrow/.style={>=latex', blue, thick},
+	% helparrow/.style={>=latex', draw=blue, fill=blue, very thick},
+	help line/.style={thin, black!90, opacity=0.5},
+	physical variable/.style={>=stealth, blue, ultra thick},	
+}
+
+\def\vehicle{%
+	\clip (-\vehicleheight/2-1mm,-\vehiclewidth/2) 
+	      -- (\vehicleheight/2-8mm,-\vehiclewidth/2) 
+	      -- (\vehicleheight/2-1mm, 0) 
+	      -- (\vehicleheight/2-8mm,\vehiclewidth/2) 
+	      -- (-\vehicleheight/2-1mm,\vehiclewidth/2) --cycle;
+	\pgftext[at=\pgfpoint{0mm}{0mm}] {\pgfuseshading{vbodyshading}}
+	\draw [thick, black] (-\vehicleheight/2-1mm,-\vehiclewidth/2) 
+	      -- (\vehicleheight/2-8mm,-\vehiclewidth/2) 
+	      -- (\vehicleheight/2-1mm, 0) 
+	      -- (\vehicleheight/2-8mm,\vehiclewidth/2) 
+	      -- (-\vehicleheight/2-1mm,\vehiclewidth/2) --cycle;
+	\draw [black] (\vehicleheight/2-8mm,-\vehiclewidth/2) -- (\vehicleheight/2-8mm,\vehiclewidth/2);
+	\filldraw [blue] (-3mm,0) coordinate (cog) circle (0.5mm);
+	% \node [cross out, draw=red,circle,anchor=center] at (-3mm,0) (cog) {};
+	% \node[inner sep=0, minimum width=25mm,draw] (0, 0) (vbody) 
+	% 	{\pgfuseshading{vbodyshading}};
+	% % \node[inner sep=0, isosceles triangle, minimum width=10mm, draw, anchor=west,
+	% % 			shading=vbodyshading] (vhead) 
+	% % 			at (vbody.east)
+	% % 			{};
+	% \clip (vbody.south east) -- (vbody.north east)  -- (22mm, 0) -- cycle;
+	% \node[inner sep=0, minimum width=25mm, anchor=west,] at (vbody.east)
+	% 	{\pgfuseshading{vbodyshading}};
+	% \draw (vbody.south east) -- (22mm, 0)  -- (vbody.north east);
+}
+
+\def\earth{%
+	\clip (\earthradius/2,70mm) 
+	      arc [radius=\earthradius, start angle=60, end angle=120] 
+	      -- ++(-60:6mm) 
+	      arc [radius={\earthradius-6mm}, start angle=120, end angle=60]
+	      -- cycle;
+	\pgftext[at=\pgfpoint{0mm}{0mm}] {\pgfuseshading{earthshading}}
+	\draw [black] (0,0) circle (\earthradius);
+}
+
+\begin{tikzpicture}[every node/.style={font=\small},%
+	execute at end picture = {
+		\begin{pgfonlayer}{background}
+			%% * Compute a few help coordinates
+			\coordinate (bl) at ($(current bounding box.south west) + (-5mm, -5mm)$);
+			\coordinate (tr) at ($(current bounding box.north east) + (+5mm, +5mm)$);
+			\draw [very thin, fill=white, %
+				  rounded corners = 1.5pt, %
+				  draw=black!50, %
+				  % decorate, %
+				  % decoration={random steps,segment length=3pt,amplitude=1pt}, %
+				  drop shadow={fill=black!30}, %
+				  % general shadow={fill=black!10, shadow scale=1.01}, %
+				  % dashed, %
+				  ]
+					% (inner box.south west) + (-5mm, -5mm) rectangle 
+					% (inner box.north east) + (5mm, 5mm);
+					(bl) rectangle (tr);
+			\useasboundingbox (bl) + (-1mm, -1mm) -- (tr) + (1mm, 1mm);
+		\end{pgfonlayer}
+	}
+	]
+
+\begin{scope}[shift = {(-15mm, 15mm)},rotate=30, transform shape]
+% \begin{scope}[shift = {(10mm, 10mm)}, transform shape]
+	\vehicle
+	\draw [physical variable] ($(cog)+(3mm,0)$) 
+	      arc [radius=3mm, start angle=0, end angle=165] ;
+	%% - Redraw the arrow tip, because it looks ugly.
+	\draw [physical variable, ->] (cog) +(160:3mm) -- ($(cog)+(-3mm,-0.4mm)$);
+\end{scope}
+
+\begin{scope}[shift = {(cog)},transform shape]
+	\draw [physical variable, ->] (5mm,0) -- +(40mm,0) 
+	      node [below left, text width=2cm, font=\small, align=flush center]
+	           {velocity with respect to the atomosphere};
+	\draw [help line] (30:18mm) -- (30:38mm);
+	\draw [help arrow,|->] (23mm,0) arc[radius=23mm, start angle=0, end angle=30];
+	\node [text=blue] at (15:25mm) {$\theta$};
+	\node [text=blue] at (-6mm,-2mm) {$T$};
+	\draw [help arrow, <-, shorten <=0.6mm] 
+	      (0,0) to [out=-90,in=160] (2mm,-7mm)
+	      node [below=1.5mm,right, text width=14mm, font=\small, align=flush center, inner sep=0pt]
+	           {center of gravity};
+\end{scope}
+
+\begin{scope}[yshift = -80mm]
+	\begin{scope}
+		\earth
+	\end{scope}
+	\draw [help arrow, ->] (65:87.3mm) 
+	      node [right, font=\small] {Earth}
+	      .. controls +(-3mm,-2mm) and +(-2mm,-2mm) .. ++(-3mm, 0mm)
+	      .. controls +(0mm,1mm) and +(1mm,2mm) .. ++(-6mm, -4mm);
+\end{scope}
+
+\end{tikzpicture}

@@ -82,15 +82,13 @@ $Ax$
 \section{PGF and \TIKZ{}} % (fold)
 \label{sec:pgf_and_tikz}
 
-\begin{tkzexample}[latex=8cm,small]
-\begin{tikzpicture}
- \tkzInit[xmax=5]  
- \tkzDrawX[label={},noticks]
-\end{tikzpicture}
-\end{tkzexample}
+% \begin{tkzexample}[latex=8cm,small]
+% \begin{tikzpicture}
+%  \tkzInit[xmax=5]  
+%  \tkzDrawX[label={},noticks]
+% \end{tikzpicture}
+% \end{tkzexample}
 
-% \tikzset{external/export next=true}
-% \tikzset{external/export next=true}
 {
 % \tikzpicturedependsonfile{Figs/Src/InvertedPendulum.tikz}
 \tikzset{external/export=true}
@@ -104,23 +102,17 @@ $Ax$
 \end{tkzexample}
 }
 
-\begin{tkzexample}[latex=8cm,small]
-\begin{tikzpicture}
- \tkzInit[xmax=5]  
- \tkzDrawX[label={},noticks]
-\end{tikzpicture}
-\end{tkzexample}
 
 {
 % \tikzpicturedependsonfile{Figs/Src/InvertedPendulum.tikz}
 \tikzset{external/export=true}
 %% !!! We really need to repeat \tikzsetnextfilename twice before and after 
 %%     \tikzpicturedependsonfile
-\tikzsetnextfilename{o-InvertedPendulum-test1}
-\tikzpicturedependsonfile{Figs/Src/test-InvertedPendulum.tikz}
-\tikzsetnextfilename{o-InvertedPendulum-test1}
+\tikzsetnextfilename{o-VehicleControl}
+\tikzpicturedependsonfile{Figs/Src/VehicleControl.tikz}
+\tikzsetnextfilename{o-VehicleControl}
 \begin{tkzexample}[vbox, small]
-\input{Figs/Src/test-InvertedPendulum.tikz}
+\input{Figs/Src/VehicleControl.tikz}
 \end{tkzexample}
 }
 

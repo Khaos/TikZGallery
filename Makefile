@@ -43,7 +43,7 @@ TEXINPUTS := $(stydirlocal):$(TEXINPUTS)
 # tmpvar := $(filter $(figpdfdir)/pgf-o-%.pdf, $(figures))
 tmpvar := $(stydir)
 
-.PHONY: show clean test tmp cleanroot
+.PHONY: show clean test tmp cleanroot pgf
 
 # $(chapters) show clean glotest bibtextest bibertest pdflatexonly pgffig cpsty
 
@@ -73,6 +73,10 @@ $(main).pdf: $(main).tex $(support) $(figures)
 tmp:
 	@TEXINPUTS="$(TEXINPUTS)" \
 	$(latexcmd) -shell-escape -file-line-error -synctex=1 $(main)
+
+
+pgf:
+	make -f $(main).makefile
 
 clean:
 	-rm -f *.pdf *.log *.aux *.out *.bbl *.bcf *.blg \
