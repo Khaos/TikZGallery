@@ -8,6 +8,8 @@ As a fan of [PGF/TikZ](http://sourceforge.net/projects/pgf/), I made a number of
 
 ### The Title Page
 
+Inspired by [tkz-doc](http://www.ctan.org/pkg/tkz-doc)
+
 ![Title page](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/TikZGallery.png)
 
 ### Bodeplot
