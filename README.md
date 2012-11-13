@@ -36,4 +36,4 @@ Inspired by [tkz-doc](http://www.ctan.org/pkg/tkz-doc)
 
 ## License
 
-This project can be redistributed and/or modified under the terms of the LATEX Project Public License Distributed from [CTAN](http://www.ctan.org/) archives.
+This project can be redistributed and/or modified under the terms of the LaTeX Project Public License Distributed from [CTAN](http://www.ctan.org/) archives.
