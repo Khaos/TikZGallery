@@ -24,6 +24,10 @@ Inspired by [tkz-doc](http://www.ctan.org/pkg/tkz-doc)
 
 ![Vehicle Control System](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-Vehicle.png)
 
+### Principal Component Analysis
+
+![Principal Component Analysis Transformation](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-PCATransform.png)
+
 
 ## Pgfplots
 

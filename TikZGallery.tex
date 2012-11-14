@@ -20,6 +20,8 @@
 
 \input{TikZGallery-Preamble}
 
+% \usepackage{bm}
+
 \begin{document}
 
 \title{\nameofpack}
@@ -113,6 +115,20 @@ $Ax$
 \tikzsetnextfilename{o-VehicleControl}
 \begin{tkzexample}[vbox, small]
 \input{Figs/Src/VehicleControl.tikz}
+\end{tkzexample}
+}
+
+
+{
+% \tikzpicturedependsonfile{Figs/Src/InvertedPendulum.tikz}
+\tikzset{external/export=true}
+%% !!! We really need to repeat \tikzsetnextfilename twice before and after 
+%%     \tikzpicturedependsonfile
+\tikzsetnextfilename{o-PCATransform}
+\tikzpicturedependsonfile{Figs/Src/PCATransform.tikz}
+\tikzsetnextfilename{o-PCATransform}
+\begin{tkzexample}[vbox, small]
+\input{Figs/Src/PCATransform.tikz}
 \end{tkzexample}
 }
 

@@ -23,9 +23,14 @@
 \usetkzobj{all} 
 \tkzSetUpColors[background=fondpaille,text=Maroon]
 
+% \usepackage{amsmath}
+% \usepackage{amsfonts}
+% \usepackage{mathrsfs}
+\usepackage{fixmath}
 \usepackage{esvect}
 % \usepackage{vector}
 \usepackage{mathtools}
+% \usepackage{bm}
 
 \usepackage{siunitx}
 
@@ -45,7 +50,7 @@
 \usepackage[autolanguage]{numprint}
 
 % \usepackage[pages=some,firstpage=true]{background}
-\usepackage[firstpage=true]{background}
+% \usepackage[firstpage=true]{background}
 \usepackage{tkzexample}
 % \usepackage[saved]{tkzexample}
 % \def\tkzFileSavedPrefix{TikZGallery}%
@@ -106,6 +111,7 @@
 	external,
 	calc,
 	mindmap,
+	chains,
 }
 
 
@@ -116,7 +122,7 @@
 %<---------------------------------  Make Title ---------------------------->
 \@ifundefined{pgfnotitlebgtrue}{\newif\ifpgfnotitlebg}{}
 
-\backgroundsetup{contents={}}
+% \backgroundsetup{contents={}}
 
 \renewcommand\maketitle{%
 \begin{tikzpicture}[remember picture, overlay]
@@ -288,6 +294,10 @@
 \makeatother
 
 \setpgfexternalmainfile{TikZGallery}
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
 
 %% !!! Use double backslash here
 \tikzset{external/system call={pdflatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\\newif\\ifpgfnotitlebg\\pgfnotitlebgtrue\\input{\texsource}"}}

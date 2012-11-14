@@ -1,0 +1,215 @@
+%% -*- Mode: LaTeX Memoir; tab-width: 4;
+
+%% PCATransform.tikz    PCA
+%% An illustration of PCA
+%% MAIN FILE: ../../TikZGallery.tex
+%% Created by Dazhi Jiang, 2011-06-10 15:25:31 +0100 (Fri, 10 Jun 2011)
+%% Copyright (c) 2011 Dazhi Jiang. All Rights Reserved. 
+
+%% TextMate Settings
+%!TEX root = ../../TikZGallery.tex
+
+\newcommand{\bm}[1]{\ensuremath{\mathbold{#1}}}
+\newcommand{\mx}[1]{\mathbf{\bm{#1}}} % Matrix command
+\newcommand{\vc}[1]{\mathbf{\bm{#1}}} % Vector command
+
+% Define a few styles and constants
+\tikzstyle{sensor}=[draw, fill=blue!20, text width=5em, 
+    text centered, minimum height=2.5em]
+\tikzstyle{ann} = [above, text width=5em]
+\tikzstyle{naveqs} = [sensor, text width=6em, fill=red!20, 
+    minimum height=12em, rounded corners]
+\def\blockdist{2.3}
+\def\edgedist{2.5}
+
+% Define the new styles for point, univar, vector and matrix
+\tikzstyle{point} = [coordinate, % inherit from coordinate, no display on document
+			>=latex',thick,draw=blue!5]
+\tikzstyle{univar}=[
+			% The size
+			minimum size = 8mm, 
+			% The shape:
+			circle, 
+			% The border:
+			very thick,
+			draw,
+			% The filling:
+			% top color=white, % a shading that is white at the top...
+			% bottom color=red!50!black!20, % and something else at the bottom
+			% Text
+			text centered,
+			% Font
+			% font=\itshape
+			]
+\tikzstyle{vectorblock}=[
+			% The size
+			minimum size = 8mm, 
+			% The shape:
+			circle, 
+			% The border:
+			very thick,
+			draw,
+			% The filling:
+			% top color=white, % a shading that is white at the top...
+			% bottom color=red!50!black!20, % and something else at the bottom
+			% Font
+			% font=\itshape
+			]
+\tikzstyle{matrixblock}=[
+			% The size
+			minimum size = 14mm, 
+			% The shape:
+			rectangle, 
+			% The border:
+			very thick,
+			draw,
+			% The filling:
+			% top color=white, % a shading that is white at the top...
+			% bottom color=red!50!black!20, % and something else at the bottom
+			% Text
+			text centered,
+			% Font
+			% font=\itshape
+			% Corner
+			rounded corners
+			]
+\tikzstyle{vdot}=[
+			% The size
+			minimum size = 4mm, 
+			% The shape:
+			% circle, 
+			% The border:
+			% very thick,
+			% draw,
+			% The filling:
+			% top color=white, % a shading that is white at the top...
+			% bottom color=red!50!black!20, % and something else at the bottom
+			% Text
+			text centered,
+			% Font
+			% font=\itshape
+			inner sep=0pt
+			]
+
+\begin{tikzpicture}[%node distances=8mm and 8mm, 
+			text height=1.5ex, text depth=.1ex, >=latex',
+			%parent anchor=east,child anchor=west,
+			%point/.style={coordinate},>=stealth',thick,draw=black!50,
+            tip/.style={->,shorten >=1pt},every join/.style={rounded corners},
+            hv path/.style={to path={-| (\tikztotarget)}},
+			vh path/.style={to path={|- (\tikztotarget)}},
+			execute at end picture = {
+				\begin{pgfonlayer}{background}
+					%% * Compute a few help coordinates
+					% \coordinate (bl) at (-40mm, -24mm);
+					% \coordinate (tr) at (58mm, 45mm);
+					\coordinate (bl) at ($(current bounding box.south west) + (-5mm, -5mm)$);
+					\coordinate (tr) at ($(current bounding box.north east) + (+5mm, +5mm)$);
+					\draw [very thin, fill=white, %
+						  rounded corners = 1.5pt, %
+						  draw=black!50, %
+						  % decorate, %
+						  % decoration={random steps,segment length=3pt,amplitude=1pt}, %
+						  drop shadow={fill=black!30}, %
+						  % general shadow={fill=black!10, shadow scale=1.01}, %
+						  % dashed, %
+						  ]
+							% (inner box.south west) + (-5mm, -5mm) rectangle 
+							% (inner box.north east) + (5mm, 5mm);
+							(bl) rectangle (tr);
+					\path[fill=green!20,rounded corners, draw=black!50, dashed]
+					    (sc1) rectangle (sc2);
+					\path[fill=black!10,rounded corners, draw=black!50, dashed]
+					    (res1) rectangle (res2);
+					\useasboundingbox (bl) + (-1mm, -1mm) -- (tr) + (1mm, 1mm);
+				\end{pgfonlayer}
+			}
+			]
+			
+	\matrix[column sep=4mm, row sep =3mm]
+  	{
+  		% 1st row:
+  		 &[15mm] & &[12mm]\node (p1) [point] {}; & [3mm]\node (z1) [univar] {$z_1$}; 
+		 & [3mm]\node (p1s)  [point]{}; \\ [-4mm] % no blank line after
+  		% 2nd row:
+  		 & & &\node (p2) [point] {}; & 
+		 \node (z2) [univar] {$z_2$}; &\node (p2s) [point]{}; 
+		 &[12mm] \node (P) [matrixblock] {$\mx{P}$}; &[15mm]\node (xhat) [point] {};\\ [-3mm]
+  		% 3rd row:
+  		 & & & & \node (dot) [vdot] {$\vdots$}; \\ [-4mm]
+  		% 4th row:
+		\node (x) [point] {}; &\node (V) [matrixblock] {$\mx{V}^T$}; & 
+		&\node (pa) [point] {}; & \node (za) [univar] {$z_a$}; 
+		 & \node (pas)  [point]{};\\ [-2mm]
+		% 5rd row:
+  		 & & &[2cm]\node (pa1) [point] {}; & \node (za1) [univar,inner sep=0pt] {$z_{a+1}$}; \\ [1mm]
+		% 6rd row:
+  		 & & & & \node (dot) [vdot] {$\vdots$}; \\
+		% 7th row
+		  & & &[2cm]\node (pD) [point] {}; & \node (zD) [univar] {$z_D$}; \\
+  	};
+	
+	\node (Vanchor) at ($(V.east)+(-3pt, 0)$) {};
+	\node (Panchor) at ($(P.west)+(3pt, 0)$) {};
+	
+	{
+	[start chain]
+	\chainin (x);
+	\chainin (V) [join = by tip];
+	\chainin (Vanchor);
+		{
+		[start branch = z1]
+		\chainin (p1) [join];
+		\chainin (z1) [join = by tip];
+		\chainin (p1s) [join];
+		\chainin (Panchor) [join = by tip];
+		}
+		{
+		[start branch = z2]
+		\chainin (p2) [join];
+		\chainin (z2) [join = by tip];
+		\chainin (p2s) [join];
+		\chainin (Panchor) [join = by tip];
+		}
+		
+		{
+		[start branch = za1]
+		\chainin (pa1) [join];
+		\chainin (za1) [join = by tip];
+		}
+		{
+		[start branch = zD]
+		\chainin (pD) [join];
+		\chainin (zD) [join = by tip];
+		}
+		
+		\chainin (pa) [join];
+		\chainin (za) [join = by tip];
+		\chainin (pas) [join];
+		\chainin (Panchor) [join = by tip];
+		
+		\chainin (P);
+		\chainin (xhat) [join = by tip];
+		
+		\node at ($(x)!0.4!(V.west)$) [above] {$\bm{x}$};
+		\node at ($(x)!0.4!(V.west)$) [below] {Data};
+		\node at ($(P.east)!0.6!(xhat)$) [above] {$\hat{\bm{x}}$};
+		\node at ($(P.east)!0.6!(xhat)$) [below, text width=2cm, text centered] {Filtered data (Feature)};
+		
+		\node (score) [above =3mm of z1, text width=2cm, text centered] {Score space};
+		\node (res) [below =1mm of zD, text width=2cm, text centered] {Residual space};
+	}
+	
+	% \begin{pgfonlayer}{background}
+        % Compute a few helper coordinates
+        \path (za.west |- za.south)+(-0.6,-0.1) node (sc1) {};
+        \path (score.north -| z1.east)+(+0.6,0.1) node (sc2) {};
+        % \path[fill=green!20,rounded corners, draw=black!50, dashed]
+        %     (sc1) rectangle (sc2);
+        \path (zD.west |- res.south)+(-0.6,-0.6) node (res1) {};
+        \path (za1.north -| za1.east)+(+0.6,0.1) node (res2) {};
+        % \path[fill=black!10,rounded corners, draw=black!50, dashed]
+        %     (res1) rectangle (res2);
+    % \end{pgfonlayer}
+
+\end{tikzpicture}

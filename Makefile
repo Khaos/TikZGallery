@@ -10,7 +10,7 @@ latexcmd := pdflatex
 stydir := ./Sty
 stydirlocal = ./Sty
 
-styfile = 
+styfile = TikZGallery-Preamble.tex
 support := $(styfile:%=$(stydir)/%)
 # /Users/Khaos/Library/texmf/tex/latex/pmat/pmat.sty
 supportlocal := $(styfile:%=$(stydirlocal)/%)
@@ -43,7 +43,7 @@ TEXINPUTS := $(stydirlocal):$(TEXINPUTS)
 # tmpvar := $(filter $(figpdfdir)/pgf-o-%.pdf, $(figures))
 tmpvar := $(stydir)
 
-.PHONY: show clean test tmp cleanroot pgf
+.PHONY: show clean test tmp cleanroot pgf pngfig
 
 # $(chapters) show clean glotest bibtextest bibertest pdflatexonly pgffig cpsty
 
@@ -77,6 +77,10 @@ tmp:
 
 pgf:
 	make -f $(main).makefile
+
+pgnfig:
+	# convert -density 300 -transparent white "\image.pdf" "\image.png"
+
 
 clean:
 	-rm -f *.pdf *.log *.aux *.out *.bbl *.bcf *.blg \
