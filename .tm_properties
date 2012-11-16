@@ -18,7 +18,7 @@ excludeInBrowser     = "{$excludeInBrowser,$localExcludeFiles}"
 
 
 TM_MAKE_FILE         = '${CWD}/Makefile'
-TM_MAKE_TARGET       = 'tmp'
+TM_MAKE_TARGET       = 'pgf'
 
 ## !!! Specify the local style file directory
 stydirlocal          = "./Sty"
