@@ -138,6 +138,20 @@ $Ax$
 }
 
 
+{
+% \tikzpicturedependsonfile{Figs/Src/InvertedPendulum.tikz}
+\tikzset{external/export=true}
+%% !!! We really need to repeat \tikzsetnextfilename twice before and after 
+%%     \tikzpicturedependsonfile
+\tikzsetnextfilename{o-SieveofEratosthenes}
+\tikzpicturedependsonfile{Figs/Src/SieveofEratosthenes.tikz}
+\tikzsetnextfilename{o-SieveofEratosthenes}
+\begin{tkzexample}[vbox, small]
+\input{Figs/Src/SieveofEratosthenes.tikz}
+\end{tkzexample}
+}
+
+
 % section pgf_and_tikz (end)
 
 

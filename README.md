@@ -28,6 +28,11 @@ Inspired by [tkz-doc](http://www.ctan.org/pkg/tkz-doc)
 
 ![Principal Component Analysis Transformation](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-PCATransform.png)
 
+### Sieve of Eratosthenes
+
+From [Sieve of Eratosthenes in tikz - TeX - LaTeX](http://tex.stackexchange.com/questions/44673/sieve-of-eratosthenes-in-tikz)
+
+![Sieve of Eratosthenes](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-SieveofEratosthenes.png)
 
 ## Pgfplots
 
