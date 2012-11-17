@@ -10,29 +10,46 @@ As a fan of [PGF/TikZ](http://sourceforge.net/projects/pgf/), I made a number of
 
 Inspired by [tkz-doc](http://www.ctan.org/pkg/tkz-doc)
 
-![Title page](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/TikZGallery.png)
+<!-- ![Title page](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/TikZGallery.png) -->
+
+<img src="https://raw.github.com/Khaos/TikZGallery/master/Figs/png/TikZGallery.png" alt="The Title Page" width="400">
+
 
 ### Bodeplot
 
-![Bodeplot](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-Bodeplot.png)
+<!-- ![Bodeplot](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-Bodeplot.png) -->
+
+<img src="https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-Bodeplot.png" alt="Bodeplot" width="400">
+
 
 ### Inverted Pendulum
 
-![Inverted Pendulum](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-InvertedPendulum.png)
+<!-- ![Inverted Pendulum](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-InvertedPendulum.png) -->
+
+<img src="https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-InvertedPendulum.png" alt="Inverted Pendulum" width="400">
+
 
 ### Vehicle Control System
 
-![Vehicle Control System](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-Vehicle.png)
+<!-- ![Vehicle Control System](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-Vehicle.png) -->
+
+<img src="https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-Vehicle.png" alt="Vehicle Control System" width="400">
 
 ### Principal Component Analysis
 
-![Principal Component Analysis Transformation](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-PCATransform.png)
+<!-- ![Principal Component Analysis Transformation](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-PCATransform.png) -->
+
+<img src="https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-PCATransform.png" alt="Principal Component Analysis" width="400">
+
 
 ### Sieve of Eratosthenes
 
 From [Sieve of Eratosthenes in tikz - TeX - LaTeX](http://tex.stackexchange.com/questions/44673/sieve-of-eratosthenes-in-tikz)
 
-![Sieve of Eratosthenes](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-SieveofEratosthenes.png)
+<!-- ![Sieve of Eratosthenes](https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-SieveofEratosthenes.png) -->
+
+<img src="https://raw.github.com/Khaos/TikZGallery/master/Figs/png/pgf-o-SieveofEratosthenes.png" alt="Sieve of Eratosthenes" width="400">
+
 
 ## Pgfplots
 
