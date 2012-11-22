@@ -104,7 +104,7 @@
 					% (inner box.south west) + (-5mm, -5mm) rectangle 
 					% (inner box.north east) + (5mm, 5mm);
 					(bl) rectangle (tr);
-			\useasboundingbox (bl) + (-1mm, -1mm) -- (tr) + (1mm, 1mm);
+			\useasboundingbox (bl) + (-2mm, -2mm) -- (tr) + (2mm, 2mm);
 		\end{pgfonlayer}
 	}
 	]
